@@ -1,0 +1,29 @@
+<div class="col-4">
+
+</div>
+<div class="container col-4 mt-5">
+    <h2 class="text-center">Add Element</h2>
+    <br>
+    <form [formGroup]="addElementForm" (ngSubmit)="submitForm(addElementForm.value)">
+        <div class="form-group">
+            <input formControlName="name" type="text" placeholder="name" class="mb-2 form-control">
+            <div class="text-danger" *ngIf="name.errors?.required">Name is required!</div>
+        </div>
+        <div class="form-group">
+            <input formControlName="image" type="text" placeholder="image" class="mb-2 form-control">
+            <div class="text-danger" *ngIf="image.errors?.required">Image is required!</div>
+        </div>
+        <div class="form-group">
+            <input formControlName="price" type="number" placeholder="price" class="mb-2 form-control">
+            <div class="text-danger" *ngIf="price.errors?.required">Price is required!</div>
+        </div>
+        <div class="row"> 
+            <a href="/estemaion" class="btn btn-primary float-left col-2 ml-3">Cancel</a>
+            <div class="col"></div>
+            <button type="submit" class="btn btn-primary float-right col-3 mr-3">Add to estimation</button>
+        </div>
+      </form>
+</div>
+<!-- "name": "test3",
+"image": "111",
+"price": 12.3 -->

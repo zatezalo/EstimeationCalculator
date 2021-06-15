@@ -1,0 +1,42 @@
+<a href="/addElement" class="btn btn-success">Add element</a>
+
+<div class="row">
+
+  <div class="m-5 col-8">
+    <div class="row">
+
+      <div *ngFor="let element of elements" class="card m-2 text-center" style="width: 18rem;">
+        <i class="{{ element.image }} fa-10x mt-2"></i>
+        <div class="card-body">
+          <h5 class="card-title">{{ element.name }} - {{ element.price }}$</h5>
+
+          <form [formGroup]="addElementForm" (ngSubmit)="addElement(element, addElementForm.value)">
+            <input formControlName="description" type="text" class="mb-2 ml-2 mr-2">
+            <button type="submit" class="btn btn-primary" [disabled]="click">Add to estimation</button>
+            <br>
+            <a class="btn btn-success mt-2" href="editElement/{{ element.id }}">Edit element</a>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="m-5 col">
+    <div *ngFor="let element of pdfElements" class="text-center">
+      <h5>{{ element.name }} {{ element.description }} : {{ element.price }}$</h5>
+    </div>
+
+    
+    <form [formGroup]="createPdfForm" (ngSubmit)="pdfCreate(createPdfForm.value)">
+      <input formControlName="text" type="text" class="mb-2 ml-2 mr-2 col">
+      <div class="row">
+        <h5 class="col-4">{{ pdfSum.toFixed(2) }}$</h5>
+        <div class="col-4"></div>
+        <button type="submit" class="btn btn-primary col-4">Create PDF</button>
+      </div>
+    </form>
+      <!-- <a class="btn btn-primary col-4 float-right" (click)="pdfCreate()">Create PDF</a> -->
+  </div>
+</div>
+

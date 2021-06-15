@@ -1,0 +1,24 @@
+<div class="col-sm-4 container mt-5">
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm.value)">
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter username" formControlName="username">
+            <div class="text-danger" *ngIf="username.errors?.required"> Username is required! </div>
+        </div>
+
+        <div class="form-group">
+            <!-- [pattern]="passwordPattern" -->
+            <input type="password" class="form-control" placeholder="Enter password" formControlName="password">
+            <div class="text-danger" *ngIf="password.errors?.required"> Password is required! </div>
+            <div class="text-danger" *ngIf="password.errors?.minlength"> Password has to be at least 6 characters long!
+            </div>
+            <div class="text-danger" *ngIf="password.errors?.pattern"> Password has to contain a number </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+        <div *ngIf="errorMsg.length > 0" class="mt-2 text-danger alert alert-danger">{{errorMsg}}</div>
+
+    </form>
+
+</div>
